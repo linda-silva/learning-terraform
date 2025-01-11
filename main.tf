@@ -50,7 +50,7 @@ module "autoscaling" {
     }
   }
 
-  image_id                    = data.aws_ami.app_ami.id
+  image_id               = data.aws_ami.app_ami.id
   instance_type          = var.instance_type
 }
 
@@ -104,6 +104,7 @@ module "blog_alb" {
       protocol         = "HTTP"
       port             = 80
       target_type      = "instance"
+      target_id        = aws_instance.blog.id
     }
   }
 
