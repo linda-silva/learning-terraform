@@ -91,6 +91,10 @@ module "blog_alb" {
     http_tcp_listeners = {
       port               = 80
       protocol           = "HTTP"
+      default_action = {
+        type             = "forward"
+        target_group_arn = module.blog_alb.target_groups.ex-instance.arn
+      }
       redirect = {
         port        = "443"
         protocol    = "HTTPS"
